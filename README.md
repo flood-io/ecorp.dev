@@ -1,3 +1,5 @@
+![](certs/ecorp.gif)
+
 # Welcome to e-corp
 
 ## What
