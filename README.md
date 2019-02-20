@@ -143,4 +143,6 @@ I'm 5400858c7220
 
 And last but not least, test it from a browser. Go ahead, click this link [www.ecorp.dev](https://www.ecorp.dev)
 
-Congratulations if you got this far. If you have questions feel free to reach out to us at Flood.
+Congratulations if you got this far. If you came here from Flood Aqueduct, you can now target your secret squirrel website from the cloud with `aqueduct --target https://www.ecorp.dev`
+
+If you have questions feel free to reach out to us at Flood.
