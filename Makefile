@@ -8,8 +8,8 @@ _ROOT_DIR:=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 ignition:
 	/usr/local/bin/ct --files-dir terraform < terraform/ignition.yml > terraform/ignition.ign
 
-target:
+ecorp-ec2:
 	@cd terraform && terraform apply -var-file=$(_ROOT_DIR)/terraform.tfvars
 
-destroy:
+destroy-ecorp-ec2:
 	@cd terraform && TF_VAR_dd_api_key=$(DD_API_KEY) terraform destroy -var-file=$(_ROOT_DIR)/terraform.tfvars
