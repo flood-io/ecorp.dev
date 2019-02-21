@@ -59,3 +59,6 @@ resource "aws_instance" "ecorp-ec2" {
     Name = "ecorp"
   }
 }
+output "ecorp-ec2.ip" {
+  value = "${aws_instance.ecorp-ec2.public_ip}"
+}
