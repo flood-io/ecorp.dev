@@ -110,10 +110,10 @@ You want your `/etc/hosts` file to look something like this:
 255.255.255.255	broadcasthost
 ::1             localhost
 
-127.0.0.1       www.ecorp.dev
+192.168.16.29  www.ecorp.dev
 ```
 
-Notice that last line there? It's letting your computer know that the server `www.ecorp.dev` lives on your [localhost](https://en.wikipedia.org/wiki/Localhost) at `127.0.0.1`. If you don't know how to edit these types of files, do so with a bit of caution. I normally `sudo vi /etc/host` assuming you know how to use [Vi](https://en.wikipedia.org/wiki/Vi). Others prefer [nano](https://en.wikipedia.org/wiki/GNU_nano). Your call, time to learn something new.
+Notice that last line there? It's letting your computer know that the server `www.ecorp.dev` lives on your machine at `192.168.16.29` which is the IP address that your router has assigned. If you don't know how to edit these types of files, do so with a bit of caution. I normally `sudo vi /etc/host` assuming you know how to use [Vi](https://en.wikipedia.org/wiki/Vi). Others prefer [nano](https://en.wikipedia.org/wiki/GNU_nano). Your call, time to learn something new.
 
 ### Test thyself
 
@@ -122,11 +122,15 @@ Couple of things you can do now to test it's all hanging together. Running this 
 ```
 getent hosts www.ecorp.dev
 ```
+or
+```
+dscacheutil -q host -a name www.ecorp.dev
+```
 
 Will hopefully show you that it resolves to this:
 
 ```
-127.0.0.1       www.ecorp.dev
+192.168.16.29       www.ecorp.dev
 ```
 
 You should also be able to curl yourself:
