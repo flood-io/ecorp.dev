@@ -1,0 +1,136 @@
+#cloud-config
+passwd:
+  users:
+    - name: core
+      ssh_authorized_keys:
+        - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDgtTf7MvZOypnTjR9lQeT//cdHFXZqYiQM6CiXpG6n5H70ebjzu3d4BTSWmSRzHJm30S2BmKK/1Z5WEy6WI+y14WrIPifbZXkP1mKi644HwtMuOP6vp/FRoU5sglkXy3SrfVQAaDr6J4gUNjP1tIULO1r0wRlRuPbVtrS+xXLP1wPQGZs0G//P9EJDQwUu9GNGaX4rTlIh7UJ61/mP+KWR/h6m/zhuyAzl2LBnWx1qsT7QyQQ+IdxbfN7zLRQ9tpls22VcwIfy1aTkIMHLp71XETZ1HGHMrgEAVZWt+YSutd2hP/HsAA3G5ANIoG1hod+UIWqW1xvraTKYKzKAgDFZ
+      groups:
+        - sudo
+        - docker
+        - systemd-journal
+storage:
+  files:
+    - path: /etc/profile.d/aliases.sh
+      filesystem: root
+      mode: 0644
+      contents:
+        inline: |
+          alias s=systemctl
+          alias j=journalctl
+          alias d=docker
+    - path: /home/core/certs/ecorp.dev.crt
+      filesystem: root
+      mode: 0644
+      contents:
+        inline: |
+          -----BEGIN CERTIFICATE-----
+          MIICyTCCAbGgAwIBAgIJAMqz3IQhKVKdMA0GCSqGSIb3DQEBCwUAMBYxFDASBgNV
+          BAMUCyouZWNvcnAuZGV2MB4XDTE5MDIyMDEzMDQxMloXDTI5MDIxNzEzMDQxMlow
+          FjEUMBIGA1UEAxQLKi5lY29ycC5kZXYwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAw
+          ggEKAoIBAQDPGAFwK/AmXESZQ9S/Cl4SB5F1bT7Xk/CRaxJbllohHs2BbyJFDtA2
+          d/avHaWtCbQYg38PinRib175ktIHyuz/Hnr/VAvzVFHxywLS7ngiWr+xJhYvuMYJ
+          n2Y56AU+y8Y/AKrZOwEaCZdbp6FxRecib6l8QdHrHSpumZB6lGh46owiKqV21ZRt
+          FNPndJakVGTGKJs+THBvZzzSZ5jEdBUOgtbvLmG0I6yG6R7R5Ea4rPM6nlRMLMU8
+          71Qp0KNqYUx1Aaw/1+UAPzfjwG800Qgr5Z4BIcJqNzukpXzigwCRcCdil0cPFt7b
+          osKGN9LQU4VR6yGUGqeddGOY2vFyUq7RAgMBAAGjGjAYMBYGA1UdEQQPMA2CCyou
+          ZWNvcnAuZGV2MA0GCSqGSIb3DQEBCwUAA4IBAQBbaO+X0eVahi014SJN8nWg574U
+          Pu3wwE1P//qExj3uM4sYtnxW4Cxo4xrwXLp3t3W3WtOspAtpNSG7dR2nl9Ykwk5Q
+          HMksfqV6JTFCZRfxLj4yzCamffupIFdq1A4L22V5VWujAQmmZ3qA2ZHcyt1eKJnE
+          3fyX9w1eTO+HNlEl6OQg0RbtylMx5dAW/s/DxTUeELiQJSj21Pl9yYW7Bxmk6Nmn
+          elGwi4aZNPyWQ92aCl2yi0mFaSsCHcQoi48DrO82ZlpAadxyTmuAJCo2iv3/xwTY
+          BCy+cJ7U7VQ+NVS5hoXS6U4gNbgdW0NL7vJJ5RUpeR3AH4xVwlV/HcljNS84
+          -----END CERTIFICATE-----
+    - path: /home/core/certs/ecorp.dev.key
+      filesystem: root
+      mode: 0600
+      contents:
+        inline: |
+          -----BEGIN PRIVATE KEY-----
+          MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDPGAFwK/AmXESZ
+          Q9S/Cl4SB5F1bT7Xk/CRaxJbllohHs2BbyJFDtA2d/avHaWtCbQYg38PinRib175
+          ktIHyuz/Hnr/VAvzVFHxywLS7ngiWr+xJhYvuMYJn2Y56AU+y8Y/AKrZOwEaCZdb
+          p6FxRecib6l8QdHrHSpumZB6lGh46owiKqV21ZRtFNPndJakVGTGKJs+THBvZzzS
+          Z5jEdBUOgtbvLmG0I6yG6R7R5Ea4rPM6nlRMLMU871Qp0KNqYUx1Aaw/1+UAPzfj
+          wG800Qgr5Z4BIcJqNzukpXzigwCRcCdil0cPFt7bosKGN9LQU4VR6yGUGqeddGOY
+          2vFyUq7RAgMBAAECggEBAJYhGvnMgH3uqbRKHjKYO3XqkqKEHeh+UQm6i0ZmCtSz
+          1dsdS8SwZnT2JpjwbyiwPiT/Pt9vScwKXNmkfCo2C/UujZAHx9oQqI8W0udDBUgy
+          bYDo0XCrDLXxHlSgRR0u8Hq/6xsr0TKk/VrufPT27gZi2IVB2gIN1LL1FG4opEvy
+          vujw/eXx0Uq6mxPdqSI8bEMrPJCSbxBkZ4J90a5RcnVEJIGNzzpbkwK40m9Tglr0
+          yi6VjlvU23qFaKQXtiF+gelYO7RZWGU81njt1j81RRzzGDpV7BL7fFVxYpmRdk00
+          Vix+/Uf/ZNGzFN1z8qpHPiYd99OdkfPc9Y6e9YK5bhkCgYEA5nDOTgUI2X/fKZkw
+          +mnqBp/h7EkN8eli00ButOHFOFKUQOdcyoMGeAJAtVxFca0cyU56Ul/RT5VSdVDP
+          teBqTUUp/ZucEjHALFcywZmI8UxW+2ra3lpUwztxDG3tPZnC1Wr0bFH3GRyz6PUd
+          UWg9uu9xtxA2+wPyh/sO2teu7l8CgYEA5hBIP9Ppgg4cg3bKjOpCzcxQqgByTLhT
+          XORaT3fkEAF1uhHDjh3y5jlZ8NMTew6xZ1eTJG75jqNv+rgGbDvc4Jp83IlJTRNf
+          yJWB1soWWm5bmedyMHl/m9m3AmCVScIzIHRsf4JE30UXqHnln6qRI1xBaPRu9xHN
+          apJAq3FGEM8CgYAjAr6FYgRvLxtTsZ+cXB0fNolXod3JhEDsgZyQRMD3BqzZk40o
+          g3GnKAh2xXcTh06ZUyAIheBCLBikFEwKgPcFmF2B13OF3CMrWXAvs8j3iDaq6hgo
+          siawpsZNMiJaOpM8Y4yRLH7TROYcnaj/pkvCrABl5MPFrVrayA0AuMYuFwKBgDDO
+          PXWE8CGN+tCMz9VrEPb1pBsccyMBa3XmX55CMdiPZrktcY3hnpjmi8UCEjzl1g61
+          TlrJTBnNZEEM7xfg7y+atmhWm31FYel8hgnZ3zoZ9UbGCbxs2fxnCGLxuFnoX84/
+          xJCcQx4WWzl7epIPrjCRLrMkP7IcTbaRBjUYl6OTAoGBAIQJCL2fc4ptgfNlj77O
+          VKNP4i/NL8yu57OiC/lNvgFHv91Iwde2B4zTGpBa5q/9rqBnlhKbLpRbJJCFtACz
+          L8Eyl/n6540y73KHIBfDk3eM0S2tBqkiw6YCO5RRjqPuo3QU0g4yxr1ePNcri2PU
+          HyByVdhDnwjIT1il7vse4UcN
+          -----END PRIVATE KEY-----
+
+systemd:
+  units:
+    - name: docker.service
+      dropins:
+        - name: 10-docker-bridge-ip.conf
+          contents: |
+            [Service]
+            Environment="DOCKER_OPTS=--bip 172.17.42.1/16"
+    - name: nginx-proxy.service
+      enabled: true
+      contents: |
+        [Unit]
+        Description=nginx-proxy
+        After=docker.service
+        [Service]
+        User=core
+        TimeoutStartSec=0
+        Restart=always
+        ExecStartPre=-/usr/bin/docker kill nginx-proxy
+        ExecStartPre=-/usr/bin/docker rm nginx-proxy
+        ExecStartPre=/usr/bin/docker pull jwilder/nginx-proxy
+        ExecStart=/usr/bin/docker run --name nginx-proxy -v /var/run/docker.sock:/tmp/docker.sock:ro -v /home/core/certs:/etc/nginx/certs -p 80:80 -p 443:443 jwilder/nginx-proxy
+        ExecStop=/usr/bin/docker stop nginx-proxy
+        [Install]
+        WantedBy=multi-user.target
+    - name: whoami.service
+      enabled: true
+      contents: |
+        [Unit]
+        Description=whoami
+        After=docker.service
+        After=nginx-proxy.service
+        [Service]
+        User=core
+        TimeoutStartSec=0
+        Restart=always
+        ExecStartPre=-/usr/bin/docker kill whoami
+        ExecStartPre=-/usr/bin/docker rm whoami
+        ExecStartPre=/usr/bin/docker pull jwilder/whoami
+        ExecStart=/usr/bin/docker run --name whoami -e VIRTUAL_HOST=www.ecorp.dev jwilder/whoami
+        ExecStop=/usr/bin/docker stop whoami
+        [Install]
+        WantedBy=multi-user.target
+    - name: datadog.service
+      enabled: true
+      contents: |
+        [Unit]
+        Description=dd-agent
+        Requires=docker.service
+        [Service]
+        User=core
+        TimeoutStartSec=0
+        Restart=always
+        ExecStartPre=-/usr/bin/docker kill dd-agent
+        ExecStartPre=-/usr/bin/docker rm dd-agent
+        ExecStartPre=-/usr/bin/docker pull datadog/docker-dd-agent:latest
+        ExecStart=/usr/bin/docker run --name dd-agent --net=host -v /home/core/conf.d:/conf.d:ro -v /var/run/docker.sock:/var/run/docker.sock -v /proc/:/host/proc/:ro -v /sys/fs/cgroup/:/host/sys/fs/cgroup:ro -e API_KEY=DD_API_KEY -e TAGS=ecorp datadog/docker-dd-agent:latest
+        ExecStop=/usr/bin/docker stop dd-agent
+        [Install]
+        WantedBy=multi-user.target
