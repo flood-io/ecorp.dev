@@ -143,6 +143,14 @@ I'm 5400858c7220
 
 And last but not least, test it from a browser. Go ahead, click this link [www.ecorp.dev](https://www.ecorp.dev)
 
-Congratulations if you got this far. If you came here from Flood Aqueduct, you can now target your secret squirrel website from the cloud with `aqueduct --target https://www.ecorp.dev`
+Congratulations if you got this far.
+
+If you came here from Flood Aqueduct, you can now target your secret squirrel website from the cloud with `aqueduct --target https://www.ecorp.dev` but before you do, make sure your `/etc/hosts` file has the IP address assigned to your machine, not just localhost. You can find that address normally with this:
+
+```
+ipconfig getifaddr en0
+```
+
+Assuming you're connected on that `en0` interface. Use that IP address, for example `10.13.31.200` instead of `127.0.0.1` and that way the tunnel client running in a container, can find your machine on your local network.
 
 If you have questions feel free to reach out to us at Flood.
